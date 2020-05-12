@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script async="true"> 
+        var qurry =[], a={ num: 0 };
+        function pushState(state){
+            if(qurry.length==0){
+                Promise.resolve().then(()=>{
+                    flush();
+                    setTimeout(()=>console.log(5556),10000);
+                });
+            }
+            debugger;
+            qurry.push({state,a});
+        }
+        function flush(){
+            let s;
+            while(s = qurry.shift()){
+                let { state, a } =s;
+               a.num =state;
+            }
+        }
+        for (let index = 0; index < 10; index++) {
+            pushState(index);
+            setTimeout(()=>{console.log(a.num)},0);
+        }
+        console.log(a.num);
+    </script>
+</head>
+<body>
+    <div id='root'></div>
+    <script src="./index.js"></script>
+</body>
+
+</html>

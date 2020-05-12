@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script async="true">var qurry = [],
+    a = {
+  num: 0
+};
+
+function pushState(state) {
+  if (qurry.length == 0) {
+    Promise.resolve().then(function () {
+      flush();
+      setTimeout(function () {
+        return console.log(5556);
+      }, 10000);
+    });
+  }
+
+  debugger;
+  qurry.push({
+    state: state,
+    a: a
+  });
+}
+
+function flush() {
+  var s;
+
+  while (s = qurry.shift()) {
+    var _s = s,
+        state = _s.state,
+        _a = _s.a;
+    _a.num = state;
+  }
+}
+
+for (var index = 0; index < 10; index++) {
+  pushState(index);
+  setTimeout(function () {
+    console.log(a.num);
+  }, 0);
+}
+
+console.log(a.num);</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="/react-simple.e31bb0bc.js"></script>
+</body>
+
+</html>
